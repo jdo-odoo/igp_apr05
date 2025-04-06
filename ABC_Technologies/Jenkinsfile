@@ -77,7 +77,6 @@ pipeline
                  
                 sh '''
                     kubectl config get-contexts
-                    kubectl get pods -n default
                     kubectl apply -f abcdeploy.yaml
                     kubectl apply -f abcservice.yaml
                 '''
