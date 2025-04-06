@@ -74,14 +74,14 @@ pipeline
         stage('Deploy to kubernetes')
         {
             steps{
-                 withCredentials([file(credentialsId: 'myClusterConfig', variable: 'KUBECONFIG')]) {
-                    sh '''
-                        kubectl config get-contexts
-                        kubectl get pods -n default
-                        kubectl apply -f abcdeploy.yaml
-                        kubectl apply -f abcservice.yaml
-                    '''
-                }
+                 
+                sh '''
+                    kubectl config get-contexts
+                    kubectl get pods -n default
+                    kubectl apply -f abcdeploy.yaml
+                    kubectl apply -f abcservice.yaml
+                '''
+        
             }
         }
         
