@@ -78,8 +78,8 @@ pipeline
                 {
                     sh '''
                         kubectl config get-contexts
-                        kubectl apply -f abcdeploy.yaml
-                        kubectl apply -f abcservice.yamlget pods'
+                        kubectl apply -f abcdeploy.yaml --validate=false
+                        kubectl apply -f abcservice.yamlget pods --validate=false
                     '''
                 }
         
