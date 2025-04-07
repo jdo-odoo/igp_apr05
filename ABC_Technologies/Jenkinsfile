@@ -77,7 +77,7 @@ pipeline
                 withKubeConfig([credentialsId: 'kubeconfig_id', serverUrl: 'abc-k8smaster.example.net']) 
                 {
                     sh '''
-                        kubectl config get-contexts
+                        kubectl get nodes
                         kubectl apply -f abcdeploy.yaml --validate=false
                         kubectl apply -f abcservice.yamlget pods --validate=false
                     '''
