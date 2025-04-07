@@ -10,10 +10,10 @@ spec:
   template:
     metadata: 
       labels:
-        app: abc_tech
+        app: abc-tech
     spec:
       containers:
       - name: abc-app
         image: jdossougoin/abc:latest
         ports:
-        - contanerPort: 8080
+        - containerPort: 8080

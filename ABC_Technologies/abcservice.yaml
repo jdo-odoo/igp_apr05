@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: abc-nodeport-svc
+  name: abc-service
 spec:
   selector:
     app: abc-tech
   ports:
     - protocol: TCP
-      ports: 80
+      port: 80
       targetPort: 8080
-  type: NodePort
+  #type: NodePort
 
  
 
