@@ -73,6 +73,9 @@ pipeline
         stage('Deploy to kubernetes')
         {
             steps{
+                
+                sh 'echo Kubeconfig path: $KUBECONFIG_FILE'
+
                 withCredentials([file(credentialsId: 'Kubeconfig-cred-id', variable: 'KUBECONFIG_FILE')]) 
                 {
                     sh '''
