@@ -74,16 +74,15 @@ pipeline
         {
             steps{
 
-                sh 'echo Kubeconfig path: $KUBECONFIG_FILE'
+                sh 'echo Kubeconfig path 1: $KUBECONFIG_FILE'
 
                 withCredentials([file(credentialsId: 'kubeconfig-id', variable: 'KUBECONFIG_FILE')]) 
                 {
-                    sh 'echo Kubeconfig path (prompt2): $KUBECONFIG_FILE'
-                    
                     sh '''
-                        kubectl --kubeconfig=$KUBECONFIG_FILE config get-contexts
-                        kubectl --kubeconfig=$KUBECONFIG_FILE apply -f abcdeploy.yaml
-                        kubectl --kubeconfig=$KUBECONFIG_FILE apply -f abcservice.yamlget pods'
+                        echo Kubeconfig path 2: ${KUBECONFIG_FILE}'
+                        kubectl --kubeconfig=${KUBECONFIG_FILE} config get-contexts
+                        kubectl --kubeconfig=${KUBECONFIG_FILE} apply -f abcdeploy.yaml
+                        kubectl --kubeconfig=${KUBECONFIG_FILE} apply -f abcservice.yamlget pods'
                     '''
                 }
         
