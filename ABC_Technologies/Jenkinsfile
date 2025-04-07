@@ -77,7 +77,6 @@ pipeline
                 
                 sh'''
                     export KUBECONFIG=/home/ubuntu/jenkins/.kube/config
-                    kubectl version --short
                     kubectl cluster-info
                 '''
 
