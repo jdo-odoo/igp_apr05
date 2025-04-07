@@ -72,7 +72,14 @@ pipeline
 
         stage('Deploy to kubernetes')
         {
+            agent { label 'slave1' }
             steps{
+                
+                sh'''
+                    export KUBECONFIG=/home/ubuntu/jenkins/.kube/config
+                    kubectl version --short
+                    kubectl cluster-info
+                '''
 
                 withKubeConfig([credentialsId: 'kubeconfig_id', serverUrl: 'abc-k8smaster.example.net:6443']) 
                 {
