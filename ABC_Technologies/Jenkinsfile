@@ -86,8 +86,8 @@ pipeline
                         pwd
                         ls -l
                         find . -name "abcdeploy.yaml"
-                        kubectl apply -f ./ABC_Technologies/abcdeploy.yaml
-                        kubectl apply -f ./ABC_Technologies/abcservice.yaml
+                        kubectl apply -f ./ABC_Technologies/abcdeploy.yaml --validate=false
+                        kubectl apply -f ./ABC_Technologies/abcservice.yaml --validate=false
                     '''
                 }
         
