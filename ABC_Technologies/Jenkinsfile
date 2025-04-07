@@ -74,7 +74,7 @@ pipeline
         {
             steps{
 
-                withKubeConfig([credentialsId: 'kubeconfig_id', serverUrl: 'abc-k8smaster.example.net']) 
+                withKubeConfig([credentialsId: 'kubeconfig_id', serverUrl: 'abc-k8smaster.example.net:6443']) 
                 {
                     sh '''
                         kubectl get nodes
