@@ -78,18 +78,20 @@ pipeline
                 sh'''
                     export KUBECONFIG=/home/ubuntu/jenkins/.kube/config
                     kubectl cluster-info
+                    kubectl apply -f ./ABC_Technologies/abcdeploy.yaml
+                    kubectl apply -f ./ABC_Technologies/abcservice.yaml
                 '''
 
-                withKubeConfig([credentialsId: 'kubeconfig_id', serverUrl: 'abc-k8smaster.example.net:6443']) 
-                {
-                    sh '''
-                        pwd
-                        ls -l
-                        find . -name "abcdeploy.yaml"
-                        kubectl apply -f ./ABC_Technologies/abcdeploy.yaml --validate=false
-                        kubectl apply -f ./ABC_Technologies/abcservice.yaml --validate=false
-                    '''
-                }
+                // withKubeConfig([credentialsId: 'kubeconfig_id', serverUrl: 'abc-k8smaster.example.net:6443']) 
+                // {
+                //     sh '''
+                //         pwd
+                //         ls -l
+                //         find . -name "abcdeploy.yaml"
+                //         kubectl apply -f ./ABC_Technologies/abcdeploy.yaml --validate=false
+                //         kubectl apply -f ./ABC_Technologies/abcservice.yaml --validate=false
+                //     '''
+                // }
         
             }
         }
