@@ -83,6 +83,8 @@ pipeline
                 withKubeConfig([credentialsId: 'kubeconfig_id', serverUrl: 'abc-k8smaster.example.net:6443']) 
                 {
                     sh '''
+                        ls -l
+                        find . -name "abcdeploy.yaml"
                         kubectl apply -f abcdeploy.yaml
                         kubectl apply -f abcservice.yamlget pods
                     '''
