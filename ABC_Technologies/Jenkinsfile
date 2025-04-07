@@ -1,9 +1,9 @@
 pipeline
 {
     agent any
-
+   
     environment {
-        KUBECONFIG='~/.kube/config'
+        KUBECONFIG='~/jenkins/.kube/config'
         DOCKER_REPO = 'jdossougoin/abc'
         DOCKER_LOGIN_ENDPOINT = 'index.docker.io/v1/'
         DOCKER_REGISTRY = 'docker.io/jdossougoin/abc'
@@ -74,12 +74,14 @@ pipeline
         stage('Deploy to kubernetes')
         {
             steps{
-                 
-                sh '''
-                    kubectl config get-contexts
-                    kubectl apply -f abcdeploy.yaml
-                    kubectl apply -f abcservice.yaml
-                '''
+                withCredentials([file(credentialsId: 'kubeconfig-cred-id', variable: 'KUBECONFIG_FILE')]) 
+                {
+                    sh '''
+                        kubectl --kubeconfig=$KUBECONFIG_FILE config get-contexts
+                        kubectl --kubeconfig=$KUBECONFIG_FILE apply -f abcdeploy.yaml
+                        kubectl --kubeconfig=$KUBECONFIG_FILE apply -f abcservice.yamlget pods'
+                    '''
+                }
         
             }
         }
