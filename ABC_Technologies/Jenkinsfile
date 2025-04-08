@@ -100,7 +100,7 @@ pipeline
         {
             steps{
                 sh'''
-                    find . -name "prometheus-values.yaml
+                    find . -name "prometheus-values.yaml"
                     export KUBECONFIG=/home/ubuntu/jenkins/.kube/config
                     helm upgrade --install prometheus prometheus-community/prometheus --namespace default -f ./ABC_Technologies/prometheus-values.yaml
                 '''
