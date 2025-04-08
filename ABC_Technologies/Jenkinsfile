@@ -102,7 +102,8 @@ pipeline
                 sh'''
                     export KUBECONFIG=/home/ubuntu/jenkins/.kube/config
                     pwd
-                    FILEPATH=find . -name "prometheus-values.yaml"
+                    ls -l */*
+                    FILEPATH=$(find . -name "prometheus-values.yaml")
                     echo $FILEPATH
                 '''
             }
