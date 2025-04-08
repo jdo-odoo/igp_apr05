@@ -7,12 +7,12 @@ pipeline
         DOCKER_LOGIN_ENDPOINT = 'index.docker.io/v1/'
         DOCKER_REGISTRY = 'docker.io/jdossougoin/abc'
     }
-
-    stages
+         
+    stages 
     {
-        stage('Code Checkout')
-        {
-            steps
+        stage('Code Checkout') 
+        { 
+            steps 
             {
                 git branch:'main',url:'https://github.com/jdo-odoo/igp_mar22.git'
             }   
@@ -101,7 +101,7 @@ pipeline
             steps{
                 sh'''
                     export KUBECONFIG=/home/ubuntu/jenkins/.kube/config
-                    helm upgrade --install prometheus prometheus-community/prometheus --namespace default -f ABC_Technologies/prometheus-values.yaml
+                    helm upgrade --install prometheus prometheus-community/prometheus --namespace default -f ./ABC_Technologies/prometheus-values.yaml
                 '''
             }
         }
