@@ -101,7 +101,7 @@ pipeline
             steps{
                 sh'''
                     export KUBECONFIG=/home/ubuntu/jenkins/.kube/config
-                    helm upgrade --install prometheus prometheus-community/prometheus --namespace default -f $(find . -name "prometheus-values.yaml" | head -n1)
+                    helm upgrade --install prometheus prometheus-community/prometheus --namespace default -f ${env.WORKSPACE}/ABC_Technologies/prometheus-values.yaml
                 '''
             }
         }
